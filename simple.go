@@ -13,11 +13,17 @@ func main() {
 	myTimer := getTimer()
 	defer myTimer()
 
+	for i := 0; i < 10; i++ {
+		// defer stack
+		defer fmt.Println(i)
+	}
+
 	showMeTheMoney()
 	fmt.Println(sum([]int{1, 2, 3}...))
 	myTimer()
 
 	(func() {
+		// IIFE
 		myTimer := "Just a string"
 		fmt.Println(myTimer)
 	})()
