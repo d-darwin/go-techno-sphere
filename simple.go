@@ -17,6 +17,11 @@ func main() {
 	fmt.Println(sum([]int{1, 2, 3}...))
 	myTimer()
 
+	(func() {
+		myTimer := "Just a string"
+		fmt.Println(myTimer)
+	})()
+
 	time.Sleep((1 * time.Second))
 }
 
