@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	killer := SecretAgent{
-		Person: Person{Name: "Sebastian Shopeen"},
+		Person: Person{Name: "Sébastien Chopin"},
 	}
 
 	fmt.Println("secret inn", killer.GetName())
