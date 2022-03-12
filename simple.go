@@ -12,7 +12,7 @@ func init() {
 
 func main() {
 	myTimer := getTimer()
-	defer myTimer()
+	defer catchPanic()
 
 	for i := 0; i < 10; i++ {
 		// defer stack
@@ -32,6 +32,8 @@ func main() {
 	ReadFile("some file")
 
 	time.Sleep((1 * time.Second))
+
+	makePanic()
 }
 
 func showMeTheMoney() {
@@ -59,4 +61,14 @@ func ReadFile(f string) (*os.File, error) {
 	}
 	defer file.Close()
 	return file, nil
+}
+
+func makePanic() {
+	panic("It's ok, it's ok")
+}
+
+func catchPanic() {
+	if r := recover(); r != nil {
+		fmt.Println("Panic deferred")
+	}
 }
