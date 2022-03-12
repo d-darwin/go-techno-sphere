@@ -6,10 +6,16 @@ func main() {
 
 }
 
-type MyObject struct {
+type MyStruct struct {
 	Num  int
 	Name string
 }
+
+type myStructSlice []MyStruct
+
+func (m myStructSlice) Less(i int) bool
+func (m myStructSlice) Len() int
+func (m myStructSlice) Swap(i, j int)
 
 type MyInt int
 
