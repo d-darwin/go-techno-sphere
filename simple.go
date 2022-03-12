@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -28,6 +29,8 @@ func main() {
 		fmt.Println(myTimer)
 	})()
 
+	ReadFile("some file")
+
 	time.Sleep((1 * time.Second))
 }
 
@@ -47,4 +50,13 @@ func getTimer() func() {
 	return func() {
 		fmt.Printf("Time from start %v\n", time.Since(start))
 	}
+}
+
+func ReadFile(f string) (*os.File, error) {
+	file, err := os.OpenFile(f, 0, 0666)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	return file, nil
 }
